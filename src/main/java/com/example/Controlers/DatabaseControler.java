@@ -113,7 +113,7 @@ public class DatabaseControler {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE username = ?");
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) return rs.getInt("id");
+            if(rs.next()) return rs.getInt("customer_id");
             return -1;
         }
         catch (Exception e) {
@@ -123,7 +123,7 @@ public class DatabaseControler {
     public Customer getUser(int userID)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE customer_id = ?");
             ps.setString(1, String.valueOf(userID));
             ResultSet rs = ps.executeQuery();
             if(rs.next()) return new Customer(userID,rs.getString("username"));
@@ -137,7 +137,7 @@ public class DatabaseControler {
     {
         try(Connection connection = dataSource.getConnection()) {
             Customer retUser;
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE customer_id = ?");
             ps.setString(1, String.valueOf(userID));
             ResultSet rs = ps.executeQuery();
             if(rs.next()) retUser = new Customer(userID,rs.getString("username"));
@@ -145,7 +145,7 @@ public class DatabaseControler {
             ps = connection.prepareStatement("SELECT * FROM terracotta WHERE owner = ?");
             ps.setInt(1,userID);
             rs = ps.executeQuery();
-            while(rs.next()) retUser.addTeracota(new Teracota(rs.getInt("id"),rs.getString("name"), Teracota.PlantTypes.values()[rs.getInt("plant")], rs.getDate("planted_at")));
+            while(rs.next()) retUser.addTeracota(new Teracota(rs.getInt("terracotta_id"),rs.getString("name"), Teracota.PlantTypes.values()[rs.getInt("plant")], rs.getDate("planted_at")));
             return retUser;
         }
         catch (Exception e) {
@@ -155,7 +155,7 @@ public class DatabaseControler {
     public void changeUser(int userID, String userName, String password)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("UPDATE customer SET username = ?, password = ? WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE customer SET username = ?, password = ? WHERE customer_id = ?");
             ps.setString(1,userName);
             ps.setString(2, password);
             ps.setInt(3, userID );
@@ -187,7 +187,7 @@ public class DatabaseControler {
     public Teracota getTeracota(int teraID)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM TERRACOtTA WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM TERRACOtTA WHERE terracotta_id = ?");
             ps.setString(1, String.valueOf(teraID));
             ResultSet rs = ps.executeQuery();
             if(rs.next()) return new Teracota(teraID,rs.getString("name"), Teracota.PlantTypes.values()[rs.getInt("plant")],rs.getDate("planted_at"));
@@ -200,7 +200,7 @@ public class DatabaseControler {
     public void deleteTeracota(int teraID)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("SET REFERENTIAL_INTEGRITY FALSE; BEGIN TRANSACTION;DELETE FROM CRON WHERE tracota = ?;DELETE FROM TERRACOTTA WHERE id = ? ;COMMIT;SET REFERENTIAL_INTEGRITY TRUE;");
+            PreparedStatement ps = connection.prepareStatement("SET REFERENTIAL_INTEGRITY FALSE; BEGIN TRANSACTION;DELETE FROM CRON WHERE tracota = ?;DELETE FROM TERRACOTTA WHERE terracotta_id = ? ;COMMIT;SET REFERENTIAL_INTEGRITY TRUE;");
             ps.setInt(1, teraID);
             ps.setInt(2, teraID);
             ps.execute();
@@ -221,12 +221,12 @@ public class DatabaseControler {
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
-                int cronID = rs.getInt("id");
+                int cronID = rs.getInt("cron_id");
                 int scheduleID = rs.getInt("Schedl");
                 int start= rs.getInt("start");
                 int endTime= rs.getInt("endTime");
 
-                ps = connection.prepareStatement("SELECT * FROM schedule WHERE id = ?");
+                ps = connection.prepareStatement("SELECT * FROM schedule WHERE schedule_id = ?");
                 ps.setInt(1,scheduleID);
                 ResultSet rs2 = ps.executeQuery();
                 ResultSetMetaData mt = rs.getMetaData();
@@ -257,7 +257,7 @@ public class DatabaseControler {
             int ef= ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
-            int identity =rs.getInt("id");
+            int identity =rs.getInt("schedule_id");
 
             ps = connection.prepareStatement("insert into Cron (tracota,Schedl,start,endTime) VALUES (?,?,?,?);");
             ps.setInt(1, teraID);
@@ -273,13 +273,13 @@ public class DatabaseControler {
     public void updateCron(Cron cron)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("UPDATE Cron SET start = ?, endTime= ? WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE Cron SET start = ?, endTime= ? WHERE cron_id = ?");
             ps.setInt(1,cron.getStartTime());
             ps.setInt(2, cron.getEndTime());
             ps.setInt(3, cron.getId());
             int result = ps.executeUpdate();
 
-            ps = connection.prepareStatement("UPDATE schedule SET temp = ?, light =? WHERE id = ?");
+            ps = connection.prepareStatement("UPDATE schedule SET temp = ?, light =? WHERE schedule_id = ?");
             ps.setFloat(1,cron.getSchedule().getTemperature());
             ps.setFloat(2, cron.getSchedule().getLight());
             ps.setInt(3, cron.getSchedule().getId());
@@ -293,7 +293,7 @@ public class DatabaseControler {
     {
         try(Connection connection = dataSource.getConnection())
         {
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM CRON WHERE id = ?;");
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM CRON WHERE cron_id = ?;");
             ps.setInt(1, cronID);
             ps.execute();
             //Todo: delete Schedule
@@ -306,7 +306,7 @@ public class DatabaseControler {
     public Plant getPlant(int plantID)
     {
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM plantType WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM plantType WHERE plantType_id = ?");
             ps.setString(1, String.valueOf(plantID));
             ResultSet rs = ps.executeQuery();
             if(rs.next()) return new Plant(Teracota.PlantTypes.values()[plantID],Integer.valueOf(rs.getInt("growtimeindays")));

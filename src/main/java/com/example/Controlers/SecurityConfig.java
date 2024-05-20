@@ -36,8 +36,8 @@ public class SecurityConfig {
                 //.formLogin(Customizer.withDefaults())
                 .formLogin((form) -> form
                         .loginPage("/login") // Custom login page
-                        .loginProcessingUrl("/login") // Form submission URL
-                        .defaultSuccessUrl("/ViewTables", true)
+                        //.loginProcessingUrl("/login") // Form submission URL
+                        .defaultSuccessUrl("/ViewTables", false)
                         .permitAll()) // Permit all to access the login page
                 .logout(logout -> logout
                         .logoutUrl("/logout")

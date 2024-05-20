@@ -15,10 +15,17 @@ public class WebController {
     public WebController(ChiliPeperApplication chiliPeperApplication) {
         this.chiliPeperApplication = chiliPeperApplication;
     }
+
+    @GetMapping("/test")
+    public String testwiev(){
+        return "test";
+    }
+
     @GetMapping("/")
     public String toHome(){
         return "index";
-    }    @GetMapping("/403")
+    }
+    @GetMapping("/403")
     public String to403(){
         return "403";
     }
