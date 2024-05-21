@@ -10,11 +10,11 @@
     <h4>Change password</h4>
     <form method="post">
         <label for="oldPassword">Old Password:</label>
-        <input type="text" id="oldPassword" name="oldPassword"><br><br>
+        <input type="text" id="oldPassword" name="oldPassword" required><br><br>
         <label for="password2">new Password:</label>
-        <input type="text" id="password" name="password"><br><br>
+        <input type="text" id="password" name="password" required><br><br>
         <label for="password2">Password*:</label>
-        <input type="text" id="password2" name="password2"><br><br>
+        <input type="text" id="password2" name="password2" required><br><br>
         <input type="submit" value="Submit">
     </form>
     <br>

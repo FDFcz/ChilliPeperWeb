@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e2550-9532-4400-87b9-d0fc3dfc78f8" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/trigers/TeracotaDeleteTriger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/test.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Controlers/AuthorizationControler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Controlers/ChiliPeperApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Controlers/ChiliPeperApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Controlers/DatabaseControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Controlers/DatabaseControler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Controlers/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Controlers/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Controlers/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Controlers/WebController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/Tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/Tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/changePassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/changePassword.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registry.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registry.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userHome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +208,9 @@
       <workItem from="1716127603723" duration="21000" />
       <workItem from="1716196506820" duration="3160000" />
       <workItem from="1716216732449" duration="454000" />
-      <workItem from="1716235723268" duration="5281000" />
+      <workItem from="1716235723268" duration="5593000" />
+      <workItem from="1716287161907" duration="3154000" />
+      <workItem from="1716306758549" duration="17422000" />
     </task>
     <task id="LOCAL-00001" summary="hello github">
       <option name="closed" value="true" />
@@ -237,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716122788858</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1716241360440</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716241360440</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

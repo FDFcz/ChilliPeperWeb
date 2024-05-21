@@ -32,7 +32,8 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
-                .csrf().disable() //allow POST
+                .csrf().disable();//allow POST
+/*
                 //.formLogin(Customizer.withDefaults())
                 .formLogin((form) -> form
                         .loginPage("/login") // Custom login page
@@ -46,6 +47,7 @@ public class SecurityConfig {
                 )
                 .exceptionHandling((exceptions) -> exceptions
                         .accessDeniedHandler(accessDeniedHandler()));
+*/
 
         return http.build();
     }

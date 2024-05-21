@@ -15,7 +15,7 @@ import java.util.List;
 @SpringBootApplication
 public class DatabaseControler {
 
-    private DataSource dataSource;
+    private static DataSource dataSource;
     public Boolean initDB()
     {
         dataSource = createSource();
@@ -24,7 +24,6 @@ public class DatabaseControler {
             System.out.println("sucess");
             return true;
         } catch (SQLException e) {
-            //return false;
             throw new RuntimeException(e);
         }
     }
@@ -107,6 +106,37 @@ public class DatabaseControler {
             throw new RuntimeException(e);
         }
     }
+    public String getUserToken(int userID){
+        Customer user = getUser(userID);
+        if(user == null) return null;
+        return getUserToken(user.getUserName());
+    }
+    public String getUserToken(String username)
+    {
+        try(Connection connection = dataSource.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement("SELECT token FROM CUSTOMER WHERE username = ?");
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) return rs.getString("token");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println("trst");
+            throw new RuntimeException(e);
+        }
+    }
+    public void setCustomerToken(int userID,String token)
+    {
+        try(Connection connection = dataSource.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement("UPDATE customer SET token = ? WHERE customer_id = ?");
+            ps.setString(1,token);
+            ps.setInt(2, userID);
+            int result = ps.executeUpdate();
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public int getUserID(String username)
     {
         try(Connection connection = dataSource.getConnection()) {
@@ -165,6 +195,7 @@ public class DatabaseControler {
             throw new RuntimeException(e);
         }
     }
+
     public void addTeracota(int userID, String teracotaName,int plantID)
     {
         try(Connection connection = dataSource.getConnection())
@@ -192,6 +223,19 @@ public class DatabaseControler {
             ResultSet rs = ps.executeQuery();
             if(rs.next()) return new Teracota(teraID,rs.getString("name"), Teracota.PlantTypes.values()[rs.getInt("plant")],rs.getDate("planted_at"));
             return null;
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public int getTeracotaOwner(int teraID)
+    {
+        try(Connection connection = dataSource.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM TERRACOtTA WHERE terracotta_id = ?");
+            ps.setString(1, String.valueOf(teraID));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) return rs.getInt("owner");
+            return -1;
         }
         catch (Exception e) {
             throw new RuntimeException(e);

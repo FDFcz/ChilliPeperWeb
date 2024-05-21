@@ -1,7 +1,8 @@
 CREATE TABLE customer (
-                       customer_id INTEGER PRIMARY KEY auto_increment,
-                       username NVARCHAR(255),
-                       password NVARCHAR(255)
+                        customer_id INTEGER PRIMARY KEY auto_increment,
+                        username NVARCHAR(50),
+                        password NVARCHAR(255),
+                        token NVARCHAR(255)
 );
 
 CREATE TABLE PLC (
@@ -58,8 +59,9 @@ insert into plantType (plantType_id, plantname, growtimeindays) VALUES (1,'Pobla
 insert into plantType (plantType_id, plantname, growtimeindays) VALUES (2,'Habareno',80);
 
 insert into customer (username,password)  VALUES ('Filip','8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72');
-insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci',1,1,2,'2024-03-01');
+insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci',1,1,2,'2024-03-05');
 insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci2',1,1,0,'2024-04-27');
+insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci3',1,1,1,'2024-05-12');
 
 insert into schedule (temp, light, humidity) VALUES (30.0,1,0.6);
 insert into schedule (temp, light, humidity) VALUES (25.0,0,0.4);
@@ -76,9 +78,13 @@ create VIEW teracotaForHarvest as
         left join terracotta as tc on pt.plantType_id = tc.plant
         left join customer as cs on tc.owner = cs.customer_id where customer_id>0 order by customer_id;
 
+create VIEW loggedUsers as select username FROM customer where token!=null;
+
+create VIEW VIP_Customers as SELECT COUNT(username) FROM customer left join terracotta on customer_id = owner
+
 
 //CREATE TRIGGER DeleteTerracotta BEFORE DELETE ON terracotta
-  //  FOR EACH ROW call "com.example.triggers.TeracotaDeleteTriger"
+    //FOR EACH ROW call "com.example.triggers.TeracotaDeleteTriger"
 
 
 //CREATE TRIGGER terracottaDelete

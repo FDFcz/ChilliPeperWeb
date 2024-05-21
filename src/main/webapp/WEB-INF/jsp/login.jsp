@@ -11,14 +11,14 @@
 <form method = "post">
     <h4>login</h4>
     <label for="user name">User name:</label>
-    <input type="text" id="user name" name="username"><br><br>
+    <input type="text" id="user name" name="username" required><br><br>
     <label for="password">Password:</label>
-    <input type="text" id="password" name="password"><br><br>
+    <input type="text" id="password" name="password" required><br><br>
     <input type="submit" value="Submit">
     <%
         String currentUser = request.getParameter("username");
         if(currentUser !=null){
-            %> <p style="color:red;";>WrongPass<p> <%
+            %> <p style="color:red;";>Wrong credentials<p> <%
         }
     %>
 </form></div>

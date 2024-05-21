@@ -36,6 +36,8 @@
 <a href=<%=toOrder%>>Order a teracota</a>
     <%String toChangePass = "ChangePassword?id="+ request.getParameter("id");%>
     <a href=<%=toChangePass%>>Change Password</a>
+    <%String toLogout = "logOut?id="+ request.getParameter("id");%>
+    <a href=<%=toLogout%>>LouOut</a>
     <br>
     <img src="../../static/images/Chily.png">
 </main>
