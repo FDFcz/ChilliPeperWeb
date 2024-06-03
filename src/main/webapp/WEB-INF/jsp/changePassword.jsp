@@ -15,7 +15,7 @@
         <input type="text" id="password" name="password" required><br><br>
         <label for="password2">Password*:</label>
         <input type="text" id="password2" name="password2" required><br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Change password">
     </form>
     <br>
     <img src="../../static/images/Chily.png">

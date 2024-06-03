@@ -2,6 +2,7 @@ package com.example.Controlers;
 import com.example.Structures.*;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.h2.api.Trigger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.imageio.plugins.tiff.TIFFDirectory;
@@ -57,7 +58,7 @@ public class DatabaseControler {
                            case "CHARACTER VARYING","TIMESTAMP":
                                stringStream.add(rs.getString(i));
                                break;
-                           case "INTEGER":
+                           case "INTEGER","BIGINT":
                                stringStream.add(String.valueOf(rs.getInt(i)));
                                break;
                            case "BOOLEAN":
@@ -209,8 +210,6 @@ public class DatabaseControler {
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
             int identity = rs.getInt(1);
-            //todo: automaticli add crons
-            //addNewCron(identity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -248,8 +247,6 @@ public class DatabaseControler {
             ps.setInt(1, teraID);
             ps.setInt(2, teraID);
             ps.execute();
-
-            //Todo: delete Schedule
         }
         catch (Exception e) {
             throw new RuntimeException(e);
@@ -293,7 +290,6 @@ public class DatabaseControler {
     {
         try(Connection connection = dataSource.getConnection())
         {
-            //todo: BEGIN TRANSACTION; not working
             PreparedStatement ps = connection.prepareStatement("insert into schedule (temp,light,humidity) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setFloat(1,30);
             ps.setFloat(2, 1);
@@ -337,10 +333,9 @@ public class DatabaseControler {
     {
         try(Connection connection = dataSource.getConnection())
         {
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM CRON WHERE cron_id = ?;");
+            PreparedStatement ps = connection.prepareStatement("SET REFERENTIAL_INTEGRITY FALSE;DELETE FROM CRON WHERE cron_id = ?;SET REFERENTIAL_INTEGRITY TRUE;");
             ps.setInt(1, cronID);
             ps.execute();
-            //Todo: delete Schedule
         }
         catch (Exception e)
         {

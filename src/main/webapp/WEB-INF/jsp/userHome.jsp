@@ -37,7 +37,7 @@
     <%String toChangePass = "ChangePassword?id="+ request.getParameter("id");%>
     <a href=<%=toChangePass%>>Change Password</a>
     <%String toLogout = "logOut?id="+ request.getParameter("id");%>
-    <a href=<%=toLogout%>>LouOut</a>
+    <a href=<%=toLogout%>>LogOut</a>
     <br>
     <img src="../../static/images/Chily.png">
 </main>

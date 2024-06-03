@@ -1,4 +1,4 @@
-package com.example.trigers;
+package com.example.triggers;
 
 import org.h2.api.Trigger;
 
@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class TeracotaDeleteTriger implements Trigger {
+public class CronDeleteTrigger implements Trigger {
     @Override
     public void init(Connection conn, String schemaName, String triggerName, String tableName, boolean before, int type) throws SQLException {
         //Trigger.super.init(conn, schemaName, triggerName, tableName, before, type);
@@ -15,11 +15,10 @@ public class TeracotaDeleteTriger implements Trigger {
     @Override
     public void fire(Connection conn, Object[] oldRow, Object[] newRow) throws SQLException {
         try (PreparedStatement ps = conn.prepareStatement(
-                "DELETE log (field1, field2, ...) " + "VALUES (?, ?, ...)")
+                "DELETE FROM schedule WHERE schedule_id = ?")
         ) {
-            ps.setObject(1, newRow[0]);
-            ps.setObject(2, newRow[1]);
-            ps.executeUpdate();
+                ps.setObject(1, oldRow[2]);
+                ps.executeUpdate();
         }
     }
 

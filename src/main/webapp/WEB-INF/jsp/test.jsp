@@ -9,6 +9,7 @@
 <body>
 <main>
     ${ChiliPeperApplication.getHTMLTable("teracotaForHarvest")}<hr>
+        ${ChiliPeperApplication.getHTMLTable("loggedUsers")}<hr>
         ${ChiliPeperApplication.getHTMLTable("VIP_Customers")}<hr>
 
 </main>

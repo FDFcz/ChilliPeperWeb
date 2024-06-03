@@ -18,7 +18,7 @@
            <option value=<%=pt%>><%=pt%></option>
 <%}%>
     </select>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Order">
 </form>
     <br>
     <img src="../../static/images/Chily.png">
