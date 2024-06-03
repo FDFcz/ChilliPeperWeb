@@ -14,7 +14,7 @@
     <input type="text" id="user name" name="username" required><br><br>
     <label for="password">Password:</label>
     <input type="text" id="password" name="password" required><br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Login">
     <%
         String currentUser = request.getParameter("username");
         if(currentUser !=null){
