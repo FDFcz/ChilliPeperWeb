@@ -1,11 +1,9 @@
 package com.example.triggers;
 
 import org.h2.api.Trigger;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 public class CronDeleteTrigger implements Trigger {
     @Override
     public void init(Connection conn, String schemaName, String triggerName, String tableName, boolean before, int type) throws SQLException {

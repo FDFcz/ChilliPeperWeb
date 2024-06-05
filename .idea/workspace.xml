@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="demo:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e7e2550-9532-4400-87b9-d0fc3dfc78f8" name="Changes" comment="add crons">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/demo_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5b6747e6-c9fa-423b-afb5-4fba962f65cf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5b6747e6-c9fa-423b-afb5-4fba962f65cf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/triggers/CronDeleteTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/triggers/CronDeleteTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/Tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/Tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +81,7 @@
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.ChiliPeperApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -80,9 +92,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.19655173&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -202,7 +214,10 @@
       <workItem from="1716306758549" duration="17476000" />
       <workItem from="1716705414000" duration="55000" />
       <workItem from="1717250750960" duration="35000" />
-      <workItem from="1717417313673" duration="8431000" />
+      <workItem from="1717417313673" duration="8847000" />
+      <workItem from="1717494265789" duration="3680000" />
+      <workItem from="1717510712707" duration="7883000" />
+      <workItem from="1717583105017" duration="7947000" />
     </task>
     <task id="LOCAL-00001" summary="hello github">
       <option name="closed" value="true" />
@@ -260,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717433951933</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add crons">
+      <option name="closed" value="true" />
+      <created>1717434040271</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717434040271</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

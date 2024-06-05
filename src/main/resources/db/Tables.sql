@@ -60,7 +60,7 @@ insert into plantType (plantType_id, plantname, growtimeindays) VALUES (2,'Habar
 
 insert into customer (username,password)  VALUES ('Filip','8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72');
 insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci',1,1,2,'2024-04-05');
-insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci2',1,1,1,'2024-05-18');
+insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci2',1,1,1,'2024-05-19');
 insert into terracotta(name, owner, PLC, plant, planted_at) VALUES ('Testovaci3',1,1,0,'2024-05-20');
 
 insert into schedule (temp, light, humidity) VALUES (30.0,1,0.6);
@@ -84,7 +84,7 @@ create VIEW teracotaForHarvest as
 create VIEW loggedUsers as select username FROM customer where token is not null;
 
 create VIEW VIP_Customers as SELECT username, COUNT(username) as TeracotaCount FROM customer left join terracotta on customer_id = owner
-                            group by username order by COUNT(username);
+                            group by username order by COUNT(username)  desc;
 
 
 CREATE TRIGGER DeleteTerracotta AFTER DELETE ON cron
